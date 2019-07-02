@@ -5,7 +5,7 @@
 }
 
 .title{
-    font-size: 50px;
+    font-size: 60px;
     margin: 0 auto;
     text-align: center;
 }
@@ -15,12 +15,12 @@
 }
 
 .cards_main {
-    width: calc(3231px / 6);
-    height: calc(1562px / 6);
+    width: calc(3231px / 5);
+    height: calc(1562px / 5);
 }
 .card {
-    width: calc(691px / 6);
-    height: calc(1056px / 6);
+    width: calc(691px / 5);
+    height: calc(1056px / 5);
     margin: 0 10px;
 }
 .card_wrap {
@@ -39,7 +39,7 @@
     border-radius: 28px;
     font-family: Arial,sans-serif;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 28px;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
     outline: none;
@@ -60,11 +60,11 @@
 .result,
 .average,
 .all_results{
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 700;
     margin-right: 40px;
 }
-.you_lost {
+.popup {
     display: none;
     position: absolute;
     top: 50%;
@@ -80,8 +80,21 @@
     flex-direction: column;
     background-color: rgba(155,155,155, .6);
 }
-.you_lost p {
-    font-size: 24px;
+.you_lost p,
+.congratulations p {
+    font-size: 32px;
     font-weight: 700;
     margin-bottom: 20px;
+    text-align: center;
+}
+.congratulations_two_aces {
+    border: red;
+}
+
+.congratulations_two_aces p {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    color: red;
 }
