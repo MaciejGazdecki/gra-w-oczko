@@ -34,7 +34,7 @@
         youLostPopup.style.display = 'none';
         congratulationsPopup.style.display = 'none';
         twoAcesPopup.style.display = 'none';
-        if(actualResult > 22) {
+        if(actualResult > 22 && actualResult !== 0) {
             gameLostResults.push(actualResult);
             document.querySelector('#games_lost').textContent = gameLostResults;
         }
