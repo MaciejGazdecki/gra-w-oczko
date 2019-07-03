@@ -3,6 +3,9 @@
     const gameResult = document.querySelector('#result');
     const average = document.querySelector('#average');
     const allResults = document.querySelector('#all_results');
+    const youLostPopup = document.querySelector('.you_lost');
+    const congratulationsPopup = document.querySelector('.congratulations');
+    const twoAcesPopup  = document.querySelector('.congratulations_two_aces');
     const resultsArray = [];
     let actualResult = 0;
     let gamePlaying;
@@ -23,8 +26,9 @@
         shuffle(cards);
         gameResult.textContent = 0;
         allCards.forEach(card => card.setAttribute('src','images/gray_back.png'));
-        document.querySelector('.you_lost').style.display = 'none';
-        document.querySelector('.congratulations').style.display = 'none';
+        youLostPopup.style.display = 'none';
+        congratulationsPopup.style.display = 'none';
+        twoAcesPopup.style.display = 'none';
         cardCounter = 0;
         actualResult = 0;
         gamePlaying = true;
@@ -39,9 +43,13 @@
                 actualResult += parseInt(cards[cardCounter]);
                 gameResult.textContent = actualResult;
                 cardCounter++;
+            } else if(actualResult === 22 && cardCounter === 2){//when the actualesult is 22 and cardCounter is 2 it means that 
+                //there are two cards only  with value 11 it must be aces
+                gamePlaying = false;
+                twoAcesPopup.style.display = 'flex';
             } else {
                 gamePlaying = false;
-                document.querySelector('.you_lost').style.display = 'flex';
+                youLostPopup.style.display = 'flex';
             }
         }
     }
@@ -59,10 +67,16 @@
             resultsArray.push(actualResult);
             allResults.textContent = resultsArray;
             average.textContent = Math.round((resultsArray.reduce((x,y) => x + y)) / resultsArray.length);
-            document.querySelector('.congratulations').style.display = 'flex'
+            congratulationsPopup.style.display = 'flex'
+        } else if (actualResult === 22 && cardCounter === 2){ 
+            gamePlaying = false;
+            resultsArray.push(actualResult);
+            allResults.textContent = resultsArray;
+            average.textContent = Math.round((resultsArray.reduce((x,y) => x + y)) / resultsArray.length);
+            twoAcesPopup.style.display = 'flex';
         } else {
             gamePlaying = false;
-            document.querySelector('.you_lost').style.display = 'flex';
+            youLostPopup.style.display = 'flex';
         }
     }
 

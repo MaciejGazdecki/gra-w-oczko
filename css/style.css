@@ -55,6 +55,7 @@
 .results {
     display: flex;
     justify-content: center;
+    margin-top: 60px;
 }
 .result,
 .average,
@@ -70,14 +71,14 @@
     left: 50%;
     transform: translate(-50%,-50%);
     height: 450px;
-    width: 700px;
+    width: 800px;
     border: 2px solid black;
     color: black;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgba(155,155,155, .6);
+    background-color: rgba(155,155,155, .8);
 }
 .you_lost p,
 .congratulations p {
@@ -87,7 +88,7 @@
     text-align: center;
 }
 .congratulations_two_aces {
-    border: red;
+    border: 2px solid red;
 }
 
 .congratulations_two_aces p {
