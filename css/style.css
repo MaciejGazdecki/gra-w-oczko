@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 .title{
-    font-size: 60px;
+    font-size: 50px;
     margin: 0 auto;
     text-align: center;
 }
@@ -59,10 +59,14 @@
 }
 .result,
 .average,
-.all_results{
-    font-size: 40px;
+.all_results,
+.twenty_ones,
+.two_aces,
+.games_lost {
+    font-size: 32px;
     font-weight: 700;
     margin-right: 40px;
+    margin-left: 15px;
 }
 .popup {
     display: none;
@@ -100,5 +104,6 @@
 }
 
 .footer {
-    margin-top: 120px;
+    text-align: right;
+    margin-right: 15px;
 }

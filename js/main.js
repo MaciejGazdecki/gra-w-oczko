@@ -3,10 +3,15 @@
     const gameResult = document.querySelector('#result');
     const average = document.querySelector('#average');
     const allResults = document.querySelector('#all_results');
+    const twentyOnes = document.querySelector('#twenty_ones');
+    const twoAces = document.querySelector('#two_aces');
     const youLostPopup = document.querySelector('.you_lost');
     const congratulationsPopup = document.querySelector('.congratulations');
     const twoAcesPopup = document.querySelector('.congratulations_two_aces');
     const resultsArray = [];
+    const twentyOnesResults = [];
+    const twoAcesResults = [];
+    const gameLostResults = [];
     let actualResult = 0;
     let gamePlaying;
 
@@ -29,6 +34,10 @@
         youLostPopup.style.display = 'none';
         congratulationsPopup.style.display = 'none';
         twoAcesPopup.style.display = 'none';
+        if(actualResult > 22) {
+            gameLostResults.push(actualResult);
+            document.querySelector('#games_lost').textContent = gameLostResults;
+        }
         cardCounter = 0;
         actualResult = 0;
         gamePlaying = true;
@@ -38,17 +47,26 @@
     //take card function
     function takeCard() {
         if (gamePlaying) {
-            if (actualResult <= 21) {
+            if (actualResult < 21) {
                 document.querySelector(`#card-${cardCounter + 1}`).src = `images/${cards[cardCounter]}.png`;
                 actualResult += parseInt(cards[cardCounter]);
                 gameResult.textContent = actualResult;
                 cardCounter++;
-            } else if (actualResult === 22 && cardCounter === 2) {//when the actualesult is 22 and cardCounter is 2 it means that 
+            } else if (actualResult === 21) {
+                gamePlaying = false;
+                twentyOnesResults.push(actualResult);
+                twentyOnes.textContent = twentyOnesResults;
+                congratulationsPopup.style.display = 'flex';
+            } else if (actualResult === 22 && cardCounter === 2) {//when the actualesult is 22 and cardCounter is 2 it means that
                 //there are two cards only  with value 11 it must be aces
                 gamePlaying = false;
+                twoAcesResults.push(actualResult);
+                twoAces.textContent = twoAcesResults;
                 twoAcesPopup.style.display = 'flex';
             } else {
                 gamePlaying = false;
+                gameLostResults.push(actualResult);
+                document.querySelector('#games_lost').textContent = gameLostResults;
                 youLostPopup.style.display = 'flex';
             }
         }
@@ -64,18 +82,18 @@
             startGame();
         } else if (actualResult === 21) {
             gamePlaying = false;
-            resultsArray.push(actualResult);
-            allResults.textContent = resultsArray;
-            average.textContent = Math.round((resultsArray.reduce((x, y) => x + y)) / resultsArray.length);
+            twentyOnesResults.push(actualResult);
+            twentyOnes.textContent = twentyOnesResults;
             congratulationsPopup.style.display = 'flex'
         } else if (actualResult === 22 && cardCounter === 2) {
             gamePlaying = false;
-            resultsArray.push(actualResult);
-            allResults.textContent = resultsArray;
-            average.textContent = Math.round((resultsArray.reduce((x, y) => x + y)) / resultsArray.length);
+            twoAcesResults.push(actualResult);
+            twoAces.textContent = twoAcesResults;
             twoAcesPopup.style.display = 'flex';
         } else {
             gamePlaying = false;
+            gameLostResults.push(actualResult);
+            document.querySelector('#games_lost').textContent = gameLostResults;
             youLostPopup.style.display = 'flex';
         }
     }
