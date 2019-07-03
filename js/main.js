@@ -34,7 +34,7 @@
         youLostPopup.style.display = 'none';
         congratulationsPopup.style.display = 'none';
         twoAcesPopup.style.display = 'none';
-        if(actualResult > 22 && actualResult !== 0) {
+        if(actualResult >= 22 && cardCounter > 2) {
             gameLostResults.push(actualResult);
             document.querySelector('#games_lost').textContent = gameLostResults;
         }
@@ -65,8 +65,6 @@
                 twoAcesPopup.style.display = 'flex';
             } else {
                 gamePlaying = false;
-                gameLostResults.push(actualResult);
-                document.querySelector('#games_lost').textContent = gameLostResults;
                 youLostPopup.style.display = 'flex';
             }
         }
@@ -75,7 +73,9 @@
 
     //take point function
     function takePoints() {
-        if (actualResult > 0 && actualResult < 21) {
+        if (actualResult === 0) {
+            startGame();
+        } else if (actualResult > 0 && actualResult < 21) {
             resultsArray.push(actualResult);
             allResults.textContent = resultsArray;
             average.textContent = Math.round((resultsArray.reduce((x, y) => x + y)) / resultsArray.length);
@@ -92,8 +92,6 @@
             twoAcesPopup.style.display = 'flex';
         } else {
             gamePlaying = false;
-            gameLostResults.push(actualResult);
-            document.querySelector('#games_lost').textContent = gameLostResults;
             youLostPopup.style.display = 'flex';
         }
     }
