@@ -44,10 +44,10 @@
             gameCounter++;
             mainGameCounter.textContent = gameCounter;
         }
+        showPercentages();
         actualResult = 0;
         gamePlaying = true;
     }
-
 
     //take card function
     function takeCard() {
@@ -75,7 +75,6 @@
         }
     }
 
-
     //take point function
     function takePoints() {
         if (actualResult === 0) {
@@ -100,8 +99,17 @@
         }
     }
 
-    //event listeners
+    //percentage show
+    function showPercentages () {
+        if (gameCounter > 0) {
+            document.querySelector('#notwins').textContent = `${((notWins / gameCounter) * 100).toFixed(2)}%`;
+            document.querySelector('#twentyones').textContent = `${((twentyOnesResults / gameCounter) * 100).toFixed(2)}%`;
+            document.querySelector('#twoaces').textContent = `${((twoAcesResults / gameCounter) * 100).toFixed(2)}%`;
+            document.querySelector('#lost').textContent = `${((gameLostResults / gameCounter) * 100).toFixed(2)}%`;
+        }
+    }
 
+    //event listeners
     document.querySelectorAll('.start').forEach(btn => btn.addEventListener('click', startGame));
     document.querySelector('.take_card').addEventListener('click', takeCard);
     document.querySelector('.stop').addEventListener('click', takePoints);
