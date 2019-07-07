@@ -14,17 +14,19 @@
 }
 
 .cards_main {
-    width: calc(3231px / 5);
-    height: calc(1562px / 5);
+    width: calc(3231px / 7);
+    height: calc(1562px / 7);
 }
-.card {
-    width: calc(691px / 5);
-    height: calc(1056px / 5);
+.card-1,
+.card-0 {
+    width: calc(691px / 7);
+    height: calc(1056px / 7);
     margin: 0 10px;
 }
 .card_wrap {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .butn {
     background: #34d947;
@@ -52,10 +54,10 @@
     text-align: center;
     margin: 15px 0;
 }
-.results {
+.game_counter {
     display: flex;
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 30px;
 }
 div {
     font-size: 32px;
@@ -63,9 +65,9 @@ div {
     margin-right: 40px;
     margin-left: 15px;
 }
-.counters_percentages {
+.counters {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 .popup {
     display: none;
