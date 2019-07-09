@@ -42,7 +42,7 @@
 
     //start game function
     function startGame() {
-        function shuffle(array) { //simple shuffling algorithm, is not ideal, but works
+        function shuffle(array) {
             for (let i = 0; i < 10000; i++) {
                 array.sort(() => Math.random() - 0.5);
             }
@@ -52,10 +52,6 @@
         cards_2.forEach(card => card.setAttribute('src', 'images/yellow_back.png'));
         twoAcesPopup.style.display = 'none';
         whoWinsPopup.style.display = 'none';
-        // if((actualResult[0] >= 22 || actualResult[1] >= 22) && cardCounter > 4) {
-        //     determineWinner(actualResult);
-        //     gamePlaying = false;
-        // }
         cardCounter = 0;
         activePlayer = 0;
         helperCardCounter = 1;
@@ -84,14 +80,8 @@
                     cardCounter++;
                     activePlayer++;
                     if (activePlayer === 2) activePlayer = 0;
-                    if((actualResult[0] === 22 || actualResult[1] === 22) && cardCounter <=4) {
-                        determineWinner(actualResult);
-                        gamePlaying = false;
-                    }
-                    if((actualResult[0] > 21 || actualResult[1] > 21)) {
-                        determineWinner(actualResult);
-                        gamePlaying = false;
-                    }
+                    if((actualResult[0] === 22 || actualResult[1] === 22) && cardCounter === 4) determineWinner(actualResult);
+                    if((actualResult[0] > 21 || actualResult[1] > 21)) determineWinner(actualResult);
                 } else if ((!playerSwing[0] && playerSwing[1]) || (playerSwing[0] && !playerSwing[1])) {
                     document.querySelector(`#card-${activePlayer}-${cardCounter + helperCardCounter}`).src
                         = `images/${cards[cardCounter]}.png`;
@@ -99,30 +89,10 @@
                     document.querySelector(`#result-${activePlayer}`).textContent = actualResult[activePlayer];
                     cardCounter++;
                     helperCardCounter++;
-                    if ((!playerSwing[0] || !playerSwing[1]) && (actualResult[activePlayer] > 21)) {
-                        determineWinner(actualResult);
-                        gamePlaying = false;
-                    }
+                    if ((!playerSwing[0] || !playerSwing[1]) && (actualResult[activePlayer] > 21)) determineWinner(actualResult);
                 }
-                // } else {
-                //     gamePlaying = false;
-                //     determineWinner(actualResult);
-                // }
             } else if (actualResult[activePlayer] === 21) {
                 alert(`Napewno kolejna karta :-)?? Masz już oczko i ${actualResult[activePlayer]} punktów :-) Spasuj`)
-                // gamePlaying = false;
-                // twentyOnesResults[activePlayer]++;
-                // document.querySelector(`#twenty_ones-${activePlayer}`).textContent = twentyOnesResults[activePlayer];
-                // congratulationsPopup.style.display = 'flex';
-            } else if (actualResult[activePlayer] === 22 && cardCounter <=4) {
-                alert(`Napewno?? Masz najwyższy układ dwóch asów!!!Spasuj :-)`)
-                // gamePlaying = false;
-                // twoAcesResults[activePlayer]++;
-                // document.querySelector(`#two_aces-${activePlayer}`).textContent = twoAcesResults[activePlayer];
-                // twoAcesPopup.style.display = 'flex';
-            } else {
-                determineWinner(actualResult);
-                // youLostPopup.style.display = 'flex';
             }
         }
     }
@@ -140,24 +110,6 @@
                 gamePlaying = false;
             }
         }
-        // } else if (actualResult[activePlayer] === 21) {
-        //     playerSwing[activePlayer] = false;
-        //     activePlayer++;
-        //     if (activePlayer === 2) activePlayer = 0;
-        //     if(!playerSwing[0] && !playerSwing[1]) determineWinner(actualResult);
-        //     // gamePlaying = false;
-        //     // twentyOnesResults++;
-        //     // twentyOnes.textContent = twentyOnesResults;
-        //     // congratulationsPopup.style.display = 'flex'
-        // } else if (actualResult[activePlayer] === 22 && cardCounter === 2) {
-        //     gamePlaying = false;
-        //     twoAcesResults++;
-        //     twoAces.textContent = twoAcesResults;
-        //     twoAcesPopup.style.display = 'flex';
-        // } else {
-        //     gamePlaying = false;
-        //     youLostPopup.style.display = 'flex';
-        // }
     }
 
     //winner determining
@@ -226,14 +178,14 @@
                 document.querySelector('.congratulations_two_aces p').textContent = ' PERSKIE OCZKO DLA GRACZA 2, KTÓRY WYGRYWA!!';
                 twoAcesPopup.style.display = 'flex';
             }
-        } else if (array[0] > 22) {
+        } else if (array[0] >= 22) {
             wins[1]++;
             wins1.textContent = wins[1];
             gameLostResults[0]++;
             lost0.textContent = gameLostResults[0];
             document.querySelector('.who-wins p').textContent = 'GRACZ 2 WYGRYWA!!';
             whoWinsPopup.style.display = 'flex';
-        } else if (array[1] > 22){
+        } else if (array[1] >= 22){
             wins[0]++;
              wins0.textContent = wins[0];
             gameLostResults[1]++;
