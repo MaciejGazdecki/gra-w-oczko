@@ -34,7 +34,7 @@
     // cards related things
     const cards_1 = document.querySelectorAll('.card-0');
     const cards_2 = document.querySelectorAll('.card-1');
-    const cards = ['11AC','11AC','11AC','2C','2C', '2D', '2H', '2S', '3C', '3D', '3H', '3S', '4C', '4D', '4H', '4S', '5C', '5D', '5H', '5S', '6C', '6D',
+    const cards = ['2C', '2D', '2H', '2S', '3C', '3D', '3H', '3S', '4C', '4D', '4H', '4S', '5C', '5D', '5H', '5S', '6C', '6D',
         '6H', '6S', '7C', '7D', '7H', '7S', '8C', '8D', '8H', '8S', '9C', '9D', '9H', '9S', '10C', '10D', '10H', '10S', '2JC',
         '2JD', '2JH', '2JS', '3QC', '3QD', '3QH', '3QS', '4KC', '4KD', '4KH', '4KS', '11AC', '11AD', '11AH', '11AS'];
     let cardCounter = 0;
@@ -47,22 +47,18 @@
                 array.sort(() => Math.random() - 0.5);
             }
         }
-        // shuffle(cards);
+        shuffle(cards);
         cards_1.forEach(card => card.setAttribute('src', 'images/gray_back.png'));
         cards_2.forEach(card => card.setAttribute('src', 'images/yellow_back.png'));
         twoAcesPopup.style.display = 'none';
         whoWinsPopup.style.display = 'none';
-        // if(actualResult >= 22 && cardCounter > 2) {
-        //     gameLostResults++;
-        //     document.querySelector('#games_lost').textContent = gameLostResults;
+        // if((actualResult[0] >= 22 || actualResult[1] >= 22) && cardCounter > 4) {
+        //     determineWinner(actualResult);
+        //     gamePlaying = false;
         // }
         cardCounter = 0;
         activePlayer = 0;
         helperCardCounter = 1;
-        // if (actualResult > 0) {
-        //     gameCounter++;
-        //     mainGameCounter.textContent = gameCounter;
-        // }
         actualResult = [0, 0];
         gamePlaying = true;
         playerSwing = [true, true];
@@ -88,6 +84,14 @@
                     cardCounter++;
                     activePlayer++;
                     if (activePlayer === 2) activePlayer = 0;
+                    if((actualResult[0] === 22 || actualResult[1] === 22) && cardCounter <=4) {
+                        determineWinner(actualResult);
+                        gamePlaying = false;
+                    }
+                    if((actualResult[0] > 21 || actualResult[1] > 21)) {
+                        determineWinner(actualResult);
+                        gamePlaying = false;
+                    }
                 } else if ((!playerSwing[0] && playerSwing[1]) || (playerSwing[0] && !playerSwing[1])) {
                     document.querySelector(`#card-${activePlayer}-${cardCounter + helperCardCounter}`).src
                         = `images/${cards[cardCounter]}.png`;
@@ -95,7 +99,10 @@
                     document.querySelector(`#result-${activePlayer}`).textContent = actualResult[activePlayer];
                     cardCounter++;
                     helperCardCounter++;
-                    if ((!playerSwing[0] || !playerSwing[1]) && (actualResult[activePlayer] > 21)) determineWinner(actualResult);
+                    if ((!playerSwing[0] || !playerSwing[1]) && (actualResult[activePlayer] > 21)) {
+                        determineWinner(actualResult);
+                        gamePlaying = false;
+                    }
                 }
                 // } else {
                 //     gamePlaying = false;
@@ -107,7 +114,7 @@
                 // twentyOnesResults[activePlayer]++;
                 // document.querySelector(`#twenty_ones-${activePlayer}`).textContent = twentyOnesResults[activePlayer];
                 // congratulationsPopup.style.display = 'flex';
-            } else if (actualResult[activePlayer] === 22 && cardCounter === 2) {
+            } else if (actualResult[activePlayer] === 22 && cardCounter <=4) {
                 alert(`Napewno?? Masz najwyższy układ dwóch asów!!!Spasuj :-)`)
                 // gamePlaying = false;
                 // twoAcesResults[activePlayer]++;
@@ -128,7 +135,10 @@
             playerSwing[activePlayer] = false;
             activePlayer++;
             if (activePlayer === 2) activePlayer = 0;
-            if (!playerSwing[0] && !playerSwing[1]) determineWinner(actualResult);
+            if (!playerSwing[0] && !playerSwing[1]) {
+                determineWinner(actualResult);
+                gamePlaying = false;
+            }
         }
         // } else if (actualResult[activePlayer] === 21) {
         //     playerSwing[activePlayer] = false;
@@ -194,11 +204,12 @@
                 document.querySelector('.who-wins p').textContent = 'OCZKO DLA GRACZA 2, KTÓRY WYGRYWA!!';
                 whoWinsPopup.style.display = 'flex';
             }
-        } else if (((array[0] === 22 || array[1] === 22) && cardCounter <= 4) || (array[0] === 22 && array[1] === 22 && cardCounter <= 4)) {
+        } else if (((array[0] === 22 || array[1] === 22) && cardCounter === 4) || (array[0] === 22 && array[1] === 22 
+            && cardCounter === 4)) {
             if(array[0] ===22 && array[1] === 22) {
                 drawsCounter++;
                 document.querySelector('#draw').textContent = drawsCounter;
-                document.querySelector('.congratulations_two_aces p').textContent = 'NIEBYWAŁY REMIS!!DWA PERSKIE OCZKA';
+                document.querySelector('.congratulations_two_aces p').textContent = 'NIEBYWAŁY REMIS!!JAK SZÓSTKA W LOTTO!!DWA PERSKIE OCZKA!';
                 twoAcesPopup.style.display = 'flex';
             } else if (array[0] === 22) {
                 twoAcesResults[0]++;
@@ -215,6 +226,20 @@
                 document.querySelector('.congratulations_two_aces p').textContent = ' PERSKIE OCZKO DLA GRACZA 2, KTÓRY WYGRYWA!!';
                 twoAcesPopup.style.display = 'flex';
             }
+        } else if (array[0] > 22) {
+            wins[1]++;
+            wins1.textContent = wins[1];
+            gameLostResults[0]++;
+            lost0.textContent = gameLostResults[0];
+            document.querySelector('.who-wins p').textContent = 'GRACZ 2 WYGRYWA!!';
+            whoWinsPopup.style.display = 'flex';
+        } else if (array[1] > 22){
+            wins[0]++;
+             wins0.textContent = wins[0];
+            gameLostResults[1]++;
+            lost1.textContent = gameLostResults[1];
+            document.querySelector('.who-wins p').textContent = 'GRACZ 1 WYGRYWA!!';
+            whoWinsPopup.style.display = 'flex';
         }
         gameCounter++;
         document.querySelector('#game_counter').textContent = gameCounter;
