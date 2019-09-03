@@ -1,0 +1,26 @@
+{
+  "name": "gra-w-oczko",
+  "version": "1.0.0",
+  "description": "This is my first web game, written in JavaScript. After extensive learning of JS I wrote the polish version of BlackJack. This is two player version only without any RWD scaling, good to display on 16:9 screen the best on 1920*1080px. In the future I will prepare mobile version.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaciejGazdecki/gra-w-oczko.git"
+  },
+  "author": "Maciej Gazdecki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaciejGazdecki/gra-w-oczko/issues"
+  },
+  "homepage": "https://github.com/MaciejGazdecki/gra-w-oczko#readme",
+  "dependencies": {
+    "autoprefixer": "^9.6.1",
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5"
+  }
+}

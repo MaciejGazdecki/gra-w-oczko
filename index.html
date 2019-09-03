@@ -4,83 +4,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <title>Gra w oko</title>
 </head>
 
 <body>
-    <header>
-        <h1 class="title">GRA W OKO</h1>
-        <div class="cards">
-            <img class="cards_main" src="images/back_cards-07.png" alt="cards">
+        <div class="container" id="header-elements">
+            <div class="row">
+                <div class="col-sm-12 col-12">
+                    <h1 class="title text-center text-sm-center">GRA W OKO</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cards col-sm-12 col-12">
+                    <img class="cards_main" src="images/back_cards-07.png" alt="cards">
+                </div>
+            </div>
         </div>
-    </header>
+
     <section class="main_section">
-        <div class="card_wrap">
-            <img src="images/gray_back.png" alt="card" id="card-1" class="card">
-            <img src="images/gray_back.png" alt="card" id="card-2" class="card">
-            <img src="images/gray_back.png" alt="card" id="card-3" class="card">
-            <img src="images/gray_back.png" alt="card" id="card-4" class="card">
-            <img src="images/gray_back.png" alt="card" id="card-5" class="card">
-            <img src="images/gray_back.png" alt="card" id="card-6" class="card">
-            <img src="images/gray_back.png" alt="card" id="card-7" class="card">
-            <img src="images/gray_back.png" alt="card" id="card-8" class="card">
-            <img src="images/gray_back.png" alt="card" id="card-9" class="card">
-            <img src="images/gray_back.png" alt="card" id="card-10" class="card">
+        <div class="card_wrap player_1">
+            <p>GRACZ 1</p>
+            <img src="images/gray_back.png" alt="card" id="card-0-0" class="card-0">
+            <img src="images/gray_back.png" alt="card" id="card-0-2" class="card-0">
+            <img src="images/gray_back.png" alt="card" id="card-0-4" class="card-0">
+            <img src="images/gray_back.png" alt="card" id="card-0-6" class="card-0">
+            <img src="images/gray_back.png" alt="card" id="card-0-8" class="card-0">
+            <img src="images/gray_back.png" alt="card" id="card-0-10" class="card-0">
+            <img src="images/gray_back.png" alt="card" id="card-0-12" class="card-0">
+            <img src="images/gray_back.png" alt="card" id="card-0-14" class="card-0">
+        </div>
+        <div class="card_wrap player_2">
+            <p>GRACZ 2</p>
+            <img src="images/yellow_back.png" alt="card" id="card-1-1" class="card-1">
+            <img src="images/yellow_back.png" alt="card" id="card-1-3" class="card-1">
+            <img src="images/yellow_back.png" alt="card" id="card-1-5" class="card-1">
+            <img src="images/yellow_back.png" alt="card" id="card-1-7" class="card-1">
+            <img src="images/yellow_back.png" alt="card" id="card-1-9" class="card-1">
+            <img src="images/yellow_back.png" alt="card" id="card-1-11" class="card-1">
+            <img src="images/yellow_back.png" alt="card" id="card-1-13" class="card-1">
+            <img src="images/yellow_back.png" alt="card" id="card-1-15" class="card-1">
         </div>
         <div class="buttons">
             <button class="start butn">START GRY</button>
             <button class="take_card butn">WEŹ KARTĘ</button>
-            <button class="stop butn">ZABIERAM PUNKTY</button>
+            <button class="stop butn">PASUJĘ</button>
         </div>
-        <div class="results">
-            <div class="result">
-                <p>TWÓJ WYNIK: <span id="result">0</span></p>
-            </div>
-            <div class="result">
-                <p>ILOŚĆ GIER: <span id="game_counter">0</span></p>
-            </div>
+        <div class="game_counter">
+            <p>ILOŚĆ GIER: <span id="game_counter">0</span></p>
+            <p>REMISY: <span id="draw">0</span></p>
         </div>
-        <div class="counters_percentages">
-            <div class="counters">
+        <div class="counters">
+            <div class="counters_1">
+                <div class="result">
+                    <p>WYNIK GRACZA 1: <span id="result-0">0</span></p>
+                </div>
                 <div class="not_wins">
-                    <p>NIEWYGRANE: <span id="not_wins">0</span></p>
+                    <p>WYGRANE: <span id="wins-0">0</span></p>
                 </div>
                 <div class="twenty_ones">
-                    <p>OCZKA: <span id="twenty_ones">0</span></p>
+                    <p>OCZKA: <span id="twenty_ones-0">0</span></p>
                 </div>
                 <div class="two_aces">
-                    <p>PERSKIE OCZKA: <span id="two_aces">0</span></p>
+                    <p>PERSKIE OCZKA: <span id="two_aces-0">0</span></p>
                 </div>
                 <div class="games_lost">
-                    <p>PRZEGRANE: <span id="games_lost">0</span></p>
+                    <p>PRZEGRANE: <span id="games_lost-0">0</span></p>
                 </div>
             </div>
-            <div class="percentages">
-                <div class="percentage_not_wins">
-                    <p>% NIEWYGRANYCH: <span id="notwins">0.00%</span></p>
+            <div class="counters_2">
+                <div class="result">
+                    <p>WYNIK GRACZA 2: <span id="result-1">0</span></p>
                 </div>
-                <div class="percentage_twenty_ones">
-                    <p>% OCZEK: <span id="twentyones">0.00%</span></p>
+                <div class="not_wins">
+                    <p>WYGRANE: <span id="wins-1">0</span></p>
                 </div>
-                <div class="percentage_two_aces">
-                    <p>% PERSKICH OCZEK: <span id="twoaces">0.00%</span></p>
+                <div class="twenty_ones">
+                    <p>OCZKA: <span id="twenty_ones-1">0</span></p>
                 </div>
-                <div class="percentage_game_lost">
-                    <p>% PRZEGRANYCH:   <span id="lost">0.00%</span></p>
+                <div class="two_aces">
+                    <p>PERSKIE OCZKA: <span id="two_aces-1">0</span></p>
+                </div>
+                <div class="games_lost">
+                    <p>PRZEGRANE: <span id="games_lost-1">0</span></p>
                 </div>
             </div>
         </div>
-        <div class="you_lost popup">
-            <p>PRZEGRAŁEŚ, PRZEKROCZONO 21 PUNKTÓW, NIESTETY NIE MOŻESZ KONTYNUOWAĆ :-(</p>
-            <button class="start butn">ZACZYNAMY OD NOWA</button>
-        </div>
-        <div class="congratulations popup">
-            <p>REWELACJA, GRATULACJE, OCZKO!!!!!!!</p>
+        <div class="who-wins popup">
+            <p></p>
             <button class="start butn">ZACZYNAMY OD NOWA</button>
         </div>
         <div class="congratulations_two_aces popup">
-            <p>REWELACJA, DWA ASY, PERSKIE OCZKO!!!!!!!!!!!!!</p>
+            <p></p>
             <button class="start butn">ZACZYNAMY OD NOWA</button>
         </div>
 
@@ -89,6 +105,9 @@
         <div class="copyright">All rights reserved &copy;Maciej Gazdecki 2019</div>
     </footer>
     <script src="js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>
