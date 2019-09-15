@@ -17,3 +17,7 @@ I hope you like it :-)
 
 http://grawoczko.cba.pl/index.html
 
+https://maciejgazdecki.github.io/gra-w-oczko/
+
+Maciej
+
