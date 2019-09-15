@@ -1,0 +1,18 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  #header-elements {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  h1, img {
+    text-align: center;
+  }
+}
+.cards_main {
+  width: (3231 / 16) * 1px;
+  height: (1562 / 16) * 1px;
+}
