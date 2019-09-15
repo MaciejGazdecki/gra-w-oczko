@@ -14,3 +14,6 @@ To play the game:
 If you are close to 21 points or in any moment you can collect the points and pass or go ahead. Remember, that if you go over 21 points you automatically loose. If you reach, exactly 21 points, you need to pass and you wait until your opponent pass. If your oponent reach as well 21 points it is a draw, if he goes over 21, you win. 
 
 I hope you like it :-)
+
+http://grawoczko.cba.pl/index.html
+
